@@ -1,4 +1,5 @@
 # PrepTheSpire-Webapp
+
 This is the react native front end for PrepTheSpire. When this is fully finished, it should allow you start new runs and continue existing runs. From there you should be offered tier score insights into your card choices and insights into different objectives your deck needs to do.
 
 # Setup
@@ -16,9 +17,11 @@ I realized I need this to be a single page app so I replaced the App component w
 I managed to add the router component and get it working with the stylesheet. Now I just need to make each menu option it's own separate component and start designing.
 I can now view my baby in the crib while working on my code and have it above all my windows! Ctrl + Win + T, Windows PowerToy ftw.
 
+11-6-2022
+Took me a while to figure this out but I had to add this as a submodule. That made everything work.
+
 # To do list
 
-- Add this back into the main repo
 - See how I would link the data from the graphql to this frontend
 - Integrate apollographql
 
