@@ -20,10 +20,13 @@ I can now view my baby in the crib while working on my code and have it above al
 11-6-2022
 Took me a while to figure this out but I had to add this as a submodule. That made everything work.
 
+11-9-2022
+I was able to configure CORS and apollographql correctly. Now I just need to use the data correctly within RunPrep.js. It'll need to map the results to the data object for the SelectList dropdown.
+
 # To do list
 
-- Integrate apollographql
-- Render a dropdown for all cards
+- Render a dropdown for all cards (currently static data, needs to be from the golang server)
+- Need a screen for after all 3 (possibly 4) cards are all setup.
 
 # Resources
 
