@@ -8,6 +8,9 @@ export default StyleSheet.create({
     navStyle: {
         paddingBottom: 15,
     },
+    footerNav: {
+        padding: 30,
+    },
     linkStyle: {
         textDecorationLine: 'none',
     },

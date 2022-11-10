@@ -22,8 +22,8 @@ Took me a while to figure this out but I had to add this as a submodule. That ma
 
 # To do list
 
-- See how I would link the data from the graphql to this frontend
 - Integrate apollographql
+- Render a dropdown for all cards
 
 # Resources
 
@@ -33,6 +33,7 @@ Some resources I used along the way
 - https://v5.reactrouter.com/native/guides/quick-start
 - https://v5.reactrouter.com/web/example/basic
 - https://www.apollographql.com/docs/react/integrations/react-native/
+- https://github.com/GraphQLGuide/guide-react-native
 
 # Legacy readme
 
