@@ -27,6 +27,7 @@ I was able to configure CORS and apollographql correctly. Now I just need to use
 
 - Render a dropdown for all cards (currently static data, needs to be from the golang server)
 - Need a screen for after all 3 (possibly 4) cards are all setup.
+- (not project related) setup a better shell for my IDE
 
 # Resources
 

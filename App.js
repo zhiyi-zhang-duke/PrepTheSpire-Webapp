@@ -12,12 +12,14 @@ import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink } from '@apollo/c
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'http://localhost:8080/graphql',
+    uri: 'http://localhost:8080/query',
+    useGETForQueries: true,
     fetchOptions: {
-      mode: 'no-cors',
+      mode: 'cors',
     },
   }),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  connectToDevTools: true,
 });
 
 export default function App() {
