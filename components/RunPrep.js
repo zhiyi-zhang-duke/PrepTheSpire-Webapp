@@ -34,11 +34,17 @@ const CARD_SCORE_QUERY = gql`
 `
 
 export default function RunPrep(props) {
+
     const [card1, setCard1] = useState("")
 
     const { data, loading } = useQuery(CARDS_QUERY, {
-        variables: { class: props.class },
+        // TODO: this should use props.class
+        variables: { class: "Ironclad" },
     })
+
+    // const { data, loading } = useQuery(CARD_SCORE_QUERY, {
+    //     variables: { name: "Corruption" },
+    // })
 
     if (loading) {
         return <Loading />
