@@ -30,6 +30,7 @@ Run Prep -> (Choose between: New Card, Remove Card, Deck Stats, Fight Info)
 
 11-12-22
 Tried to figure out how to pass props via Link. Did not have a good time. Turns out it has to be done very specifically. Lots of contradictory documentation even from reactrouter.com.
+Figured out how to get the dropdown to call the function within the component. Just need to redirect to RunPrepNow.
 
 # To do list
 
@@ -59,6 +60,8 @@ Setting up react native for development
 - https://reactnative.dev/docs/asyncstorage
   Styling buttons
 - https://docs.expo.dev/ui-programming/react-native-styling-buttons/
+  A question about redirecting
+- https://stackoverflow.com/questions/34735580/how-to-do-a-redirect-to-another-route-with-react-router
 
 # Legacy readme
 

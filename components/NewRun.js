@@ -1,5 +1,5 @@
 import {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Text, View, ScrollView, Pressable } from 'react-native';
 import styles from '../common.style.js';
 import { SelectList } from "react-native-dropdown-select-list";
@@ -9,8 +9,10 @@ const Separator = () => (
 );
 
 export default function NewRun() {
+    const [selected, setSelected] = useState("")
     const [heroClass, setHeroClass] = useState("")
     const [ascensionLevel, setAscensionLevel] = useState(0)
+    const navigate = useNavigate();
 
     const heroClassData = [
       {key:'1', value:'Ironclad'},
@@ -42,13 +44,18 @@ export default function NewRun() {
       {key:'20', value:20},
     ]
 
+    const renderRunPrep = () => {
+      //Todo: use useNavigate to route to the RunPrep component
+      alert(`Start the run as ${heroClass}`)
+    }
+
     return (
         <View style={styles.container}>
           <ScrollView style={styles.menuWrapper}>
             <h2 style={styles.menuTitle}>New Run</h2>
             <h3 style={styles.menuTitle}>Class</h3>
             <SelectList
-                setSelect={(heroClass) => setHeroClass(heroClass)}
+                setSelected={(heroClass) => setHeroClass(heroClass)}
                 data={heroClassData}
                 save="value"
                 boxStyles={styles.blackBackground}
@@ -58,7 +65,7 @@ export default function NewRun() {
             />          
             <h3 style={styles.menuTitle}>Ascension Level</h3>
             <SelectList
-                setSelect={(ascensionLevel) => setAscensionLevel(ascensionLevel)}
+                setSelected={(ascensionLevel) => setAscensionLevel(ascensionLevel)}
                 data={ascensionLevelData}
                 save="value"
                 boxStyles={styles.blackBackground}
@@ -69,7 +76,7 @@ export default function NewRun() {
             <Separator />
             <Pressable
               style={styles.buttonStyle}
-              onPress={() => alert("pressed")}
+              onPress={() => renderRunPrep()}
             >
               <Text style={styles.buttonText}>Start Run</Text>              
             </Pressable>
