@@ -23,6 +23,14 @@ Took me a while to figure this out but I had to add this as a submodule. That ma
 11-9-2022
 I was able to configure CORS and apollographql correctly. Now I just need to use the data correctly within RunPrep.js. It'll need to map the results to the data object for the SelectList dropdown.
 
+11-11-22
+I was able to get CARDS_QUERY working. I think I need an intermediate screen. The flow should be:
+New Run -> Choose class
+Run Prep -> (Choose between: New Card, Remove Card, Deck Stats, Fight Info)
+
+11-12-22
+Tried to figure out how to pass props via Link. Did not have a good time. Turns out it has to be done very specifically. Lots of contradictory documentation even from reactrouter.com.
+
 # To do list
 
 - Render a dropdown for all cards (currently static data, needs to be from the golang server)
@@ -33,11 +41,24 @@ I was able to configure CORS and apollographql correctly. Now I just need to use
 
 Some resources I used along the way
 
+Setting up react native for development
+
 - https://reactnative.dev/docs/environment-setup
+  Configuring react router for single page web applications
 - https://v5.reactrouter.com/native/guides/quick-start
 - https://v5.reactrouter.com/web/example/basic
+  Integration apollo graphql
 - https://www.apollographql.com/docs/react/integrations/react-native/
+  Creating my first query
 - https://github.com/GraphQLGuide/guide-react-native
+  Useful ui element
+- https://www.npmjs.com/package/react-native-dropdown-select-list
+  Passing props within react router
+- https://ui.dev/react-router-pass-props-to-components
+  Storage within app
+- https://reactnative.dev/docs/asyncstorage
+  Styling buttons
+- https://docs.expo.dev/ui-programming/react-native-styling-buttons/
 
 # Legacy readme
 

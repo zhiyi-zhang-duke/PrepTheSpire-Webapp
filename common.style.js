@@ -39,5 +39,36 @@ export default StyleSheet.create({
         width: 64,
         height: 64,
     },
+    //SelectList styles
+    blackBackground: {
+        backgroundColor: '#5A5A5A',
+    },
+    whiteBackground: {
+        backgroundColor: '#fff',
+    },
+    monospaceFont: {
+        fontFamily: 'monospace',
+    },
+
+    //Pressables and separators
+    separator: {
+        marginVertical: 8,
+        borderBottomColor: '#000000',
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        marginTop: 15,
+        marginBottom: 15,
+    },
+    buttonStyle: {
+        borderRadius: 6,
+        backgroundColor: '#5A5A5A',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 15,
+    },
+    buttonText: {
+        color: 'white',
+        fontFamily: 'monospace',
+        fontWeight: 'bold',
+    }
 });
   

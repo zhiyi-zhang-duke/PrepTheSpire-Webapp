@@ -1,6 +1,6 @@
 import {useState} from "react";
 import { Text, View, ScrollView } from 'react-native';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from '../common.style.js';
 import { gql, useQuery } from '@apollo/client'
 import Loading from './Loading'
@@ -35,11 +35,11 @@ const CARD_SCORE_QUERY = gql`
 
 export default function RunPrep(props) {
 
+    const location = useLocation()
     const [card1, setCard1] = useState("")
 
     const { data, loading } = useQuery(CARDS_QUERY, {
-        // TODO: this should use props.class
-        variables: { class: "Ironclad" },
+        variables: { class: location.state.class },
     })
 
     // const { data, loading } = useQuery(CARD_SCORE_QUERY, {
@@ -65,9 +65,9 @@ export default function RunPrep(props) {
                 setSelect={(card) => setCard1(card)}
                 data={testData}
                 save="value"
-                boxStyles={{backgroundColor: '#5A5A5A'}}
-                inputStyles={{backgroundColor: '#5A5A5A', fontFamily: 'monospace',}}
-                dropdownItemStyles={{fontFamily: 'monospace',}}
+                boxStyles={styles.blackBackground}
+                inputStyles={styles.blackBackground && styles.monospaceFont}
+                dropdownItemStyles={styles.monospaceFont}
                 dropdownStyles={{backgroundColor: '#fff', fontFamily: 'monospace',}}
             />
           </ScrollView>
