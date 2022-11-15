@@ -33,7 +33,7 @@ const CARD_SCORE_QUERY = gql`
 
 `
 
-export default function RunPrep(props) {
+export default function NewCard(props) {
 
     const location = useLocation()
     const [card1, setCard1] = useState("")
@@ -59,7 +59,7 @@ export default function RunPrep(props) {
     return (
         <View style={styles.container}>
           <ScrollView style={styles.menuWrapper}>
-            <h3 style={styles.menuTitle}>Choices</h3>
+            <h3 style={styles.menuTitle}>New Card</h3>
             <div style={styles.menuOption}>Card 1</div>
             <SelectList
                 setSelect={(card) => setCard1(card)}

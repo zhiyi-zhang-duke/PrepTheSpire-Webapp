@@ -32,10 +32,12 @@ Run Prep -> (Choose between: New Card, Remove Card, Deck Stats, Fight Info)
 Tried to figure out how to pass props via Link. Did not have a good time. Turns out it has to be done very specifically. Lots of contradictory documentation even from reactrouter.com.
 Figured out how to get the dropdown to call the function within the component. Just need to redirect to RunPrepNow.
 
+11-14-22
+Tweaking the UI. I've also gotten app storage to work and that may be the direction I decide to take all of the info being transmitted throughout the components.
+
 # To do list
 
-- Render a dropdown for all cards (currently static data, needs to be from the golang server)
-- Need a screen for after all 3 (possibly 4) cards are all setup.
+- Figure out why links aren't clickable in the right places
 - (not project related) setup a better shell for my IDE
 
 # Resources

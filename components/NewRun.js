@@ -3,13 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { Text, View, ScrollView, Pressable } from 'react-native';
 import styles from '../common.style.js';
 import { SelectList } from "react-native-dropdown-select-list";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Separator = () => (
   <View style={styles.separator} />
 );
 
 export default function NewRun() {
-    const [selected, setSelected] = useState("")
     const [heroClass, setHeroClass] = useState("")
     const [ascensionLevel, setAscensionLevel] = useState(0)
     const navigate = useNavigate();
@@ -45,6 +45,14 @@ export default function NewRun() {
     ]
 
     const renderRunPrep = () => {
+      const storeData = async (value) => {
+        try {
+          await AsyncStorage.setItem('@hero', heroClass)
+          await AsyncStorage.setItem('@ascensionLevel', ascensionLevel)
+        } catch (e) {
+          console.log(e)
+        }
+      }
       //Todo: use useNavigate to route to the RunPrep component
       alert(`Start the run as ${heroClass}`)
     }

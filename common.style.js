@@ -69,6 +69,7 @@ export default StyleSheet.create({
         color: 'white',
         fontFamily: 'monospace',
         fontWeight: 'bold',
+        fontSize: 20,
     }
 });
   
