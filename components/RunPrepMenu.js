@@ -1,6 +1,6 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import { Text, View, ScrollView, Pressable } from 'react-native';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from '../common.style.js';
 
 const Separator = () => (
@@ -8,15 +8,57 @@ const Separator = () => (
   );  
 
 export default function RunPrepMenu(props) {
-    const testData = [
-        {key:'1', value:'Corruption'},
-        {key:'2', value:'Reaper'},    
-        {key:'3', value:'Demon Form'},
-    ]
+    const [heroClass, setHeroClass] = useState("")
+    const [ascensionLevel, setAscensionLevel] = useState(0)    
+
+    const getHeroClass = async () => {
+        try {
+            const heroValue = await AsyncStorage.getItem('@heroClass')
+            if(!heroValue) {
+                alert("Please select a hero first!")
+                navigate("/newrun")
+            }
+            setHeroClass(heroValue)
+            return heroValue
+        } catch(e) {
+            // error reading value
+        }
+    }
+
+    const getAscensionLevel = async () => {
+        try {
+            const ascensionLevel = await AsyncStorage.getItem('@ascensionLevel')
+            if(!ascensionLevel) {
+                alert("Please select an ascension level first!")
+                navigate("/newrun")
+            }
+            setAscensionLevel(ascensionLevel)
+            return ascensionLevel
+        } catch(e) {
+            // error reading value
+        }
+    }
+
+
+    useEffect(() => {
+        // console.log(getAscensionLevel());
+      }, []);
+    
+    const navigate = useNavigate();
 
     const renderNewCard = () => {
-        //Todo: use useNavigate to route to the RunPrep component
-        alert("Navigating to NewCard.js...")
+        getHeroClass().then((value => {
+            console.log(value)
+        }));
+
+        getAscensionLevel().then((value => {
+            console.log(value)
+        }));        
+        // if(!heroClass || !ascensionLevel){
+        //     alert("No hero class or ascension level detected!")
+        // }
+        alert("Navigating to /newcard")
+        // navigate("/newcard")
     }
 
     const renderRelicPrep = () => {
@@ -48,21 +90,21 @@ export default function RunPrepMenu(props) {
             <Separator />
             <Pressable
               style={styles.buttonStyle}
-              onPress={() => renderNewCard()}
+              onPress={() => renderRelicPrep()}
             >
               <Text style={styles.buttonText}>Relic</Text>              
             </Pressable>
             <Separator />
             <Pressable
               style={styles.buttonStyle}
-              onPress={() => renderNewCard()}
+              onPress={() => renderFightPrep()}
             >
               <Text style={styles.buttonText}>Fights</Text>              
             </Pressable>
             <Separator />
             <Pressable
               style={styles.buttonStyle}
-              onPress={() => renderNewCard()}
+              onPress={() => renderDeckPrep()}
             >
               <Text style={styles.buttonText}>Deck</Text>              
             </Pressable>

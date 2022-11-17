@@ -34,6 +34,7 @@ Figured out how to get the dropdown to call the function within the component. J
 
 11-14-22
 Tweaking the UI. I've also gotten app storage to work and that may be the direction I decide to take all of the info being transmitted throughout the components.
+Left off trying to figure out how to get the AsynStorage item value for hero. Await should theoretically allow me to do synchronous execution.
 
 # To do list
 

@@ -44,17 +44,66 @@ export default function NewRun() {
       {key:'20', value:20},
     ]
 
-    const renderRunPrep = () => {
-      const storeData = async (value) => {
-        try {
-          await AsyncStorage.setItem('@hero', heroClass)
-          await AsyncStorage.setItem('@ascensionLevel', ascensionLevel)
-        } catch (e) {
-          console.log(e)
-        }
+    const storeHero = async (value) => {
+      try {
+        await AsyncStorage.setItem('@heroClass', value)
+        console.log(`Stored heroClass ${heroClass}`)
+      } catch (e) {
+        console.log(e)
       }
-      //Todo: use useNavigate to route to the RunPrep component
+    }    
+
+    const storeAscensionLevel = async (value) => {
+      try {
+        await AsyncStorage.setItem('@ascensionLevel', value)
+        console.log(`Stored ascensionLevel ${ascensionLevel}`)
+      } catch (e) {
+        console.log(e)
+      }
+    }        
+
+    const getHeroClass = async () => {
+        try {
+            const heroValue = await AsyncStorage.getItem('@heroClass')
+            if(!heroValue) {
+                alert("Please select a hero first!")
+                navigate("/newrun")
+            }
+            setHeroClass(heroValue)
+            return heroValue
+        } catch(e) {
+            // error reading value
+        }
+    }
+
+    const getAscensionLevel = async () => {
+        try {
+            const ascensionLevel = await AsyncStorage.getItem('@ascensionLevel')
+            if(!ascensionLevel) {
+                alert("Please select an ascension level first!")
+                navigate("/newrun")
+            }
+            setAscensionLevel(ascensionLevel)
+            return ascensionLevel
+        } catch(e) {
+            // error reading value
+        }
+    }
+
+    const renderRunPrep = () => {
+      storeHero(heroClass)
+      storeAscensionLevel(ascensionLevel)
       alert(`Start the run as ${heroClass}`)
+    }
+
+    const getStoredValues = () => {
+      getHeroClass().then((value => {
+          console.log(value)
+      }));
+
+      getAscensionLevel().then((value => {
+          console.log(value)
+      }));
     }
 
     return (
@@ -88,6 +137,13 @@ export default function NewRun() {
             >
               <Text style={styles.buttonText}>Start Run</Text>              
             </Pressable>
+            <Separator />
+            <Pressable
+              style={styles.buttonStyle}
+              onPress={() => getStoredValues()}
+            >
+              <Text style={styles.buttonText}>Test Storage</Text>              
+            </Pressable>            
           </ScrollView>
           <nav style={styles.footerNav}>
               <Link to="/" style={styles.linkStyle}><Text style={styles.menuOption}>

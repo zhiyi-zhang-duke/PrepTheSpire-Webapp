@@ -35,11 +35,10 @@ const CARD_SCORE_QUERY = gql`
 
 export default function NewCard(props) {
 
-    const location = useLocation()
     const [card1, setCard1] = useState("")
 
     const { data, loading } = useQuery(CARDS_QUERY, {
-        variables: { class: location.state.class },
+        variables: { class: "Silent" },
     })
 
     // const { data, loading } = useQuery(CARD_SCORE_QUERY, {
@@ -56,6 +55,7 @@ export default function NewCard(props) {
         {key:'3', value:'Demon Form'},
     ]
 
+    //Todo: Make the divs nicer
     return (
         <View style={styles.container}>
           <ScrollView style={styles.menuWrapper}>

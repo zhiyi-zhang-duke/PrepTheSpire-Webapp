@@ -18,9 +18,7 @@ export default function Menu() {
               <Link to="/runprep" style={styles.linkStyle}><Text style={styles.menuOption}>Run Prep</Text></Link>
             </nav>
             <nav style={styles.navStyle}>
-              <Link to={{
-                pathname: "/newcard",
-                }} state={{class: 'Silent'}} style={styles.linkStyle}><Text style={styles.menuOption}>New Card (test)</Text></Link>
+              <Link to="/newcard" style={styles.linkStyle}><Text style={styles.menuOption}>New Card (test)</Text></Link>
             </nav>
             <nav style={styles.navStyle}>
               <Link to="/settings" style={styles.linkStyle}><Text style={styles.menuOption}>Settings</Text></Link>
