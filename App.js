@@ -1,6 +1,7 @@
 import NewRun from './components/NewRun';
 import RunPrep from './components/RunPrepMenu';
 import NewCard from './components/NewCard';
+import CardsAnalysis from './components/CardsAnalysis';
 import Menu from './components/Menu';
 import Settings from './components/Settings';
 import {
@@ -32,6 +33,7 @@ export default function App() {
             <Route exact path="/newrun" element={<NewRun />} />
             <Route exact path="/runprep" element={<RunPrep />} />
             <Route exact path="/newcard" element={<NewCard />} />
+            <Route exact path="/CardsAnalysis" element={<CardsAnalysis />} />
             {/* <Route exact path="/continuerun" element={<ContinueRun />} /> */}
             <Route exact path="/settings" element={<Settings />} />           
           </Routes>

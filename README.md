@@ -41,6 +41,11 @@ Left off trying to figure out how to get the AsynStorage item value for hero. Aw
 - Figure out why links aren't clickable in the right places
 - (not project related) setup a better shell for my IDE
 
+# Questions that I need to ask a sme
+
+- Should I use react router to render pages in a single page web application or hide and show components within a parent component?
+- Why does AsyncStorage work across components?
+
 # Resources
 
 Some resources I used along the way

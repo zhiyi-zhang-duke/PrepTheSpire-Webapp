@@ -11,35 +11,6 @@ export default function RunPrepMenu(props) {
     const [heroClass, setHeroClass] = useState("")
     const [ascensionLevel, setAscensionLevel] = useState(0)    
 
-    const getHeroClass = async () => {
-        try {
-            const heroValue = await AsyncStorage.getItem('@heroClass')
-            if(!heroValue) {
-                alert("Please select a hero first!")
-                navigate("/newrun")
-            }
-            setHeroClass(heroValue)
-            return heroValue
-        } catch(e) {
-            // error reading value
-        }
-    }
-
-    const getAscensionLevel = async () => {
-        try {
-            const ascensionLevel = await AsyncStorage.getItem('@ascensionLevel')
-            if(!ascensionLevel) {
-                alert("Please select an ascension level first!")
-                navigate("/newrun")
-            }
-            setAscensionLevel(ascensionLevel)
-            return ascensionLevel
-        } catch(e) {
-            // error reading value
-        }
-    }
-
-
     useEffect(() => {
         // console.log(getAscensionLevel());
       }, []);
@@ -47,18 +18,7 @@ export default function RunPrepMenu(props) {
     const navigate = useNavigate();
 
     const renderNewCard = () => {
-        getHeroClass().then((value => {
-            console.log(value)
-        }));
-
-        getAscensionLevel().then((value => {
-            console.log(value)
-        }));        
-        // if(!heroClass || !ascensionLevel){
-        //     alert("No hero class or ascension level detected!")
-        // }
-        alert("Navigating to /newcard")
-        // navigate("/newcard")
+        navigate("/newcard")
     }
 
     const renderRelicPrep = () => {

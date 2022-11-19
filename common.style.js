@@ -70,6 +70,11 @@ export default StyleSheet.create({
         fontFamily: 'monospace',
         fontWeight: 'bold',
         fontSize: 20,
+    },
+
+    //Card styles
+    cardText: {
+        padding: 10,
     }
 });
   
