@@ -34,6 +34,7 @@ export default StyleSheet.create({
     menuFooter: {
         justifyContent: 'center',
         alignItems: 'center',
+        flexDirection: 'row',
     },
     menuImage: {
         width: 64,
