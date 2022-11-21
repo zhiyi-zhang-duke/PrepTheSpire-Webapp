@@ -34,6 +34,7 @@ export default StyleSheet.create({
     menuFooter: {
         justifyContent: 'center',
         alignItems: 'center',
+        flexDirection: 'row',
     },
     menuImage: {
         width: 64,
@@ -75,6 +76,6 @@ export default StyleSheet.create({
     //Card styles
     cardText: {
         padding: 10,
-    }
+    }    
 });
   
