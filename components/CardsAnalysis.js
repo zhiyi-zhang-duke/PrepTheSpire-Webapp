@@ -29,9 +29,6 @@ export default function CardsAnalysis() {
     const location = useLocation()
     const navigate = useNavigate();
 
-    const [card1, setCard1] = useState("")
-    const [card2, setCard2] = useState("")
-    const [card3, setCard3] = useState("")
     const [modalVisible, setModalVisible] = useState(false)
 
     const { data: data1, loading: loading1 } = useQuery(CARD_SCORE_QUERY, {
