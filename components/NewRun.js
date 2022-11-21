@@ -18,7 +18,8 @@ export default function NewRun() {
       {key:'1', value:'Ironclad'},
       {key:'2', value:'Silent'},
       {key:'3', value:'Defect'},
-      {key:'4', value:'Watcher'},
+      // Watcher card data not available
+      // {key:'4', value:'Watcher'},
     ]
 
     const ascensionLevelData = [
@@ -62,48 +63,10 @@ export default function NewRun() {
       }
     }        
 
-    const getHeroClass = async () => {
-        try {
-            const heroValue = await AsyncStorage.getItem('@heroClass')
-            if(!heroValue) {
-                alert("Please select a hero first!")
-                navigate("/newrun")
-            }
-            setHeroClass(heroValue)
-            return heroValue
-        } catch(e) {
-            // error reading value
-        }
-    }
-
-    const getAscensionLevel = async () => {
-        try {
-            const ascensionLevel = await AsyncStorage.getItem('@ascensionLevel')
-            if(!ascensionLevel) {
-                alert("Please select an ascension level first!")
-                navigate("/newrun")
-            }
-            setAscensionLevel(ascensionLevel)
-            return ascensionLevel
-        } catch(e) {
-            // error reading value
-        }
-    }
-
     const renderRunPrep = () => {
       storeHero(heroClass)
       storeAscensionLevel(ascensionLevel)
-      alert(`Start the run as ${heroClass}`)
-    }
-
-    const getStoredValues = () => {
-      getHeroClass().then((value => {
-          console.log(value)
-      }));
-
-      getAscensionLevel().then((value => {
-          console.log(value)
-      }));
+      navigate("/runprep")
     }
 
     return (
@@ -137,13 +100,7 @@ export default function NewRun() {
             >
               <Text style={styles.buttonText}>Start Run</Text>              
             </Pressable>
-            <Separator />
-            <Pressable
-              style={styles.buttonStyle}
-              onPress={() => getStoredValues()}
-            >
-              <Text style={styles.buttonText}>Test Storage</Text>              
-            </Pressable>            
+            <Separator />           
           </ScrollView>
           <nav style={styles.footerNav}>
               <Link to="/" style={styles.linkStyle}><Text style={styles.menuOption}>
