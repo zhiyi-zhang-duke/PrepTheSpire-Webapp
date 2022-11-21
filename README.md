@@ -5,7 +5,9 @@ This is the react native front end for PrepTheSpire. When this is fully finished
 # Setup
 
 npx create-expo-app react-native-example
+
 npx expo install react-native-web@~0.18.7 react-dom@18.0.0 @expo/webpack-config@^0.17.0
+
 npm expo start
 
 # Where I left off
