@@ -1,6 +1,6 @@
 import {useState} from "react";
-import { Text, View, ScrollView } from 'react-native';
-import { Link, useLocation } from "react-router-dom";
+import { Text, View, ScrollView, Pressable } from 'react-native';
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from '../common.style.js';
 import { gql, useQuery } from '@apollo/client'
 import Loading from './Loading'
@@ -33,43 +33,82 @@ const CARD_SCORE_QUERY = gql`
 
 `
 
+const Separator = () => (
+    <View style={styles.separator} />
+  );  
+
 export default function NewCard(props) {
 
-    const location = useLocation()
+    const location = useLocation()    
     const [card1, setCard1] = useState("")
+    const [card2, setCard2] = useState("")
+    const [card3, setCard3] = useState("")
+
+    const navigate = useNavigate();
 
     const { data, loading } = useQuery(CARDS_QUERY, {
-        variables: { class: location.state.class },
+        // Todo: fix the hardcoded value
+        // variables: { class: location.state.class },
+        variables: { class: "Silent" },
     })
-
-    // const { data, loading } = useQuery(CARD_SCORE_QUERY, {
-    //     variables: { name: "Corruption" },
-    // })
 
     if (loading) {
         return <Loading />
     }
 
-    const testData = [
-        {key:'1', value:'Corruption'},
-        {key:'2', value:'Reaper'},    
-        {key:'3', value:'Demon Form'},
-    ]
+    var cardData;
+    if (data.cardTiersByClass) {
+        cardData = data.cardTiersByClass.map((item) => {
+            return item.card
+        })
+    }
 
+    const renderCardsAnalysis = () => {
+        navigate("/cardsanalysis")
+    }
+
+    //Todo: Make the divs nicer
     return (
         <View style={styles.container}>
           <ScrollView style={styles.menuWrapper}>
-            <h3 style={styles.menuTitle}>New Card</h3>
+            <h2 style={styles.menuTitle}>New Card</h2>
             <div style={styles.menuOption}>Card 1</div>
             <SelectList
-                setSelect={(card) => setCard1(card)}
-                data={testData}
+                setSelected={(val) => setCard1(val)}
+                data={cardData ? cardData : []}
                 save="value"
                 boxStyles={styles.blackBackground}
                 inputStyles={styles.blackBackground && styles.monospaceFont}
                 dropdownItemStyles={styles.monospaceFont}
                 dropdownStyles={{backgroundColor: '#fff', fontFamily: 'monospace',}}
             />
+            <div style={styles.menuOption}>Card 2</div>
+            <SelectList
+                setSelected={(card2) => setCard2(card2)}
+                data={cardData ? cardData : []}
+                save="value"
+                boxStyles={styles.blackBackground}
+                inputStyles={styles.blackBackground && styles.monospaceFont}
+                dropdownItemStyles={styles.monospaceFont}
+                dropdownStyles={{backgroundColor: '#fff', fontFamily: 'monospace',}}
+            />
+            <div style={styles.menuOption}>Card 3</div>
+            <SelectList
+                setSelected={(card3) => setCard3(card3)}
+                data={cardData ? cardData : []}
+                save="value"
+                boxStyles={styles.blackBackground}
+                inputStyles={styles.blackBackground && styles.monospaceFont}
+                dropdownItemStyles={styles.monospaceFont}
+                dropdownStyles={{backgroundColor: '#fff', fontFamily: 'monospace',}}
+            />
+            <Separator />
+            <Pressable
+              style={styles.buttonStyle}
+              onPress={() => renderCardsAnalysis()}
+            >
+              <Text style={styles.buttonText}>Analyze</Text>              
+            </Pressable>               
           </ScrollView>
           <nav style={styles.footerNav}>
               <Link to="/" style={styles.linkStyle}><Text style={styles.menuOption}>

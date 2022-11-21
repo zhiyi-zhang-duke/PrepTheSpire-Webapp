@@ -34,11 +34,17 @@ Figured out how to get the dropdown to call the function within the component. J
 
 11-14-22
 Tweaking the UI. I've also gotten app storage to work and that may be the direction I decide to take all of the info being transmitted throughout the components.
+Left off trying to figure out how to get the AsynStorage item value for hero. Await should theoretically allow me to do synchronous execution.
 
 # To do list
 
 - Figure out why links aren't clickable in the right places
 - (not project related) setup a better shell for my IDE
+
+# Questions that I need to ask a sme
+
+- Should I use react router to render pages in a single page web application or hide and show components within a parent component?
+- Why does AsyncStorage work across components?
 
 # Resources
 
@@ -76,3 +82,4 @@ Setting up react native for development
   > Should I commit the ".expo" folder?
   > No, you should not share the ".expo" folder. It does not contain any information that is relevant for other developers working on the project, it is specific to your machine.
   > Upon project creation, the ".expo" folder is already added to your ".gitignore" file.
+
