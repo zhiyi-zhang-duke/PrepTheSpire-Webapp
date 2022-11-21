@@ -1,10 +1,11 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import { Text, View, ScrollView, Pressable } from 'react-native';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from '../common.style.js';
 import { gql, useQuery } from '@apollo/client'
 import Loading from './Loading'
 import { SelectList } from "react-native-dropdown-select-list";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const CARDS_QUERY = gql`
     query cardTierClass($class: String!){
@@ -38,6 +39,24 @@ const Separator = () => (
   );  
 
 export default function NewCard(props) {
+    const [heroClass, setHeroClass] = useState("")
+    const getHeroClass = async () => {
+        try {
+            const heroValue = await AsyncStorage.getItem('@heroClass')
+            if(!heroValue) {
+                alert("Please select a hero first!")
+                navigate("/newrun")
+            }
+            console.log(`Found run, current hero is ${heroValue}`)
+            setHeroClass(heroValue)
+        } catch(e) {
+            // error reading value
+        }
+    }  
+
+    useEffect(() => {
+        getHeroClass()
+      }, []);    
 
     const location = useLocation()    
     const [card1, setCard1] = useState("")
@@ -49,7 +68,7 @@ export default function NewCard(props) {
     const { data, loading } = useQuery(CARDS_QUERY, {
         // Todo: fix the hardcoded value
         // variables: { class: location.state.class },
-        variables: { class: "Silent" },
+        variables: { class: heroClass },
     })
 
     if (loading) {
@@ -64,7 +83,7 @@ export default function NewCard(props) {
     }
 
     const renderCardsAnalysis = () => {
-        navigate("/cardsanalysis")
+        navigate("/cardsanalysis", {state: {card1: card1, card2, card2, card3: card3}})
     }
 
     //Todo: Make the divs nicer

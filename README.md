@@ -40,6 +40,7 @@ Left off trying to figure out how to get the AsynStorage item value for hero. Aw
 
 - Figure out why links aren't clickable in the right places
 - (not project related) setup a better shell for my IDE
+- Get rid of that pesky "ReactDOM.render is no longer supporte din React 18" bug
 
 # Questions that I need to ask a sme
 
@@ -82,4 +83,3 @@ Setting up react native for development
   > Should I commit the ".expo" folder?
   > No, you should not share the ".expo" folder. It does not contain any information that is relevant for other developers working on the project, it is specific to your machine.
   > Upon project creation, the ".expo" folder is already added to your ".gitignore" file.
-

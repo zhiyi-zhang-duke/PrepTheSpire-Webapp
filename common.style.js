@@ -76,6 +76,40 @@ export default StyleSheet.create({
     //Card styles
     cardText: {
         padding: 10,
-    }    
+    },
+
+    //Modal styles
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "#5A5A5A",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: "center",
+    },
+    modalButtonStyle: {
+        borderRadius: 6,
+        backgroundColor: '#6B695E',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 15,
+        margin: 10,
+    },
 });
   

@@ -1,6 +1,6 @@
 import {useState} from "react";
-import { Text, View, ScrollView, Pressable } from 'react-native';
-import { Link, useNavigate } from "react-router-dom";
+import { Text, View, ScrollView, Pressable, Modal } from 'react-native';
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { gql, useQuery } from '@apollo/client'
 import styles from '../common.style.js';
 import Loading from './Loading'
@@ -26,36 +26,25 @@ const Separator = () => (
   );
 
 export default function CardsAnalysis() {
-
-    // Todo: change this to dynamic cards
-    const cardName1 = "Acrobatics"
-    const cardName2 = "Deadly Poison"
-    const cardName3 = "Bullet Time"
+    const location = useLocation()
+    const navigate = useNavigate();
 
     const [card1, setCard1] = useState("")
     const [card2, setCard2] = useState("")
     const [card3, setCard3] = useState("")
-
-    const navigate = useNavigate();
-
+    const [modalVisible, setModalVisible] = useState(false)
 
     const { data: data1, loading: loading1 } = useQuery(CARD_SCORE_QUERY, {
-        // Todo: fix the hardcoded value
-        // variables: { class: location.state.class },
-        variables: { name: cardName1 },
+        variables: { name: location.state.card1 },
     })
 
     const { data: data2, loading: loading2 } = useQuery(CARD_SCORE_QUERY, {
-        // Todo: fix the hardcoded value
-        // variables: { class: location.state.class },
-        variables: { name: cardName2 },
+        variables: { name: location.state.card2 },
     })    
 
     const { data: data3, loading: loading3 } = useQuery(CARD_SCORE_QUERY, {
-        // Todo: fix the hardcoded value
-        // variables: { class: location.state.class },
-        variables: { name: cardName3 },
-    })        
+        variables: { name: location.state.card3 },
+    })
 
     if (loading1 || loading2 || loading3) {
         return <Loading />
@@ -84,12 +73,56 @@ export default function CardsAnalysis() {
     const addCard = () => {
         alert("Coming soon!")
     }
+
+    const renderAddCardModal = (cardData) => {
+        setModalVisible(true)
+    }
+
+    const addCardToDeck = () => {
+        setModalVisible(false)
+        //Todo: perform deck adding operation
+    }
+
+    const closeModal = () => {
+        setModalVisible(false)
+    }
     
     return (
         <View style={styles.container}>
             <ScrollView style={styles.menuWrapper}>
                 <h2 style={styles.menuTitle}>Analysis</h2>
-                <Card>
+                <Modal
+                    animationType="fade"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        alert("Dismissing modal")
+                        setModalVisible(!modalVisible)
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <h2 style={styles.menuTitle}>Add This?</h2>
+                            <Separator />
+                            <View style={{flexDirection: 'row'}}>
+                                <Pressable
+                                    style={styles.modalButtonStyle}
+                                    onPress={addCardToDeck}
+                                >
+                                    <Text style={styles.buttonText}>Add</Text>              
+                                </Pressable>
+                                <Pressable
+                                    style={styles.modalButtonStyle}
+                                    onPress={closeModal}
+                                >
+                                    <Text style={styles.buttonText}>Nevermind</Text>              
+                                </Pressable>                                
+                            </View>
+
+                        </View>
+                    </View>
+                </Modal>
+                <Card onClick={(card1Data) => renderAddCardModal(card1Data)}>
                     <Card.Title>{card1Data.card}</Card.Title>
                     <View style={{flexDirection:'row'}}>
                         <Text style={styles.cardText}>Act 1: {card1Data.act1}</Text>
