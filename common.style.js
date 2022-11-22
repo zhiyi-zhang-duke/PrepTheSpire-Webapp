@@ -6,7 +6,7 @@ export default StyleSheet.create({
         backgroundColor: '#000000',
     },
     navStyle: {
-        paddingBottom: 15,
+        paddingBottom: 40,
     },
     footerNav: {
         padding: 30,
@@ -20,14 +20,13 @@ export default StyleSheet.create({
     },
     menuTitle: {
         color: '#fff',
-        fontSize: 32,
+        fontSize: 40,
         fontWeight: 'bold',
         fontFamily: 'monospace',
     },
     menuOption: {
-        paddingTop: 30,
         color: '#fff',
-        fontSize: 20,
+        fontSize: 25,
         fontFamily: 'monospace',
     },
     // Figure out how to get the 2 icons side by side
@@ -35,6 +34,7 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
+        padding: 60,
     },
     menuImage: {
         width: 64,
