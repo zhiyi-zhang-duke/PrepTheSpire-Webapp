@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, ScrollView } from 'react-native';
 import { Link } from "react-router-dom";
 import styles from '../common.style.js';
 
@@ -9,7 +9,7 @@ export default function Menu() {
     const whale = require('../assets/whale.png')
     return (
         <View style={styles.container}>
-          <View style={styles.menuWrapper}>
+          <ScrollView style={styles.menuWrapper}>
             <h2 style={styles.menuTitle}>Prep The Spire</h2>
             <nav style={styles.navStyle}>
               <Link to="/newrun" style={styles.linkStyle}><Text style={styles.menuOption}>New Run</Text></Link>
@@ -23,12 +23,12 @@ export default function Menu() {
             <nav style={styles.navStyle}>
               <Link to="/settings" style={styles.linkStyle}><Text style={styles.menuOption}>Settings</Text></Link>
             </nav>
-            {/* The 2 icons are meant to represent neow studying */}
-            <View style={styles.menuFooter}>
-                <Image style={styles.menuImage} source={book}></Image>
-                <Image style={styles.menuImage} source={whale}></Image>
-            </View>
-          </View>
+          </ScrollView>
+          {/* The 2 icons are meant to represent neow studying */}
+          <View style={styles.menuFooter}>
+              <Image style={styles.menuImage} source={book}></Image>
+              <Image style={styles.menuImage} source={whale}></Image>
+          </View>          
         </View>
       );
 }
