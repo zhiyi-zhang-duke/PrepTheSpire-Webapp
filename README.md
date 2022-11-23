@@ -5,9 +5,7 @@ This is the react native front end for PrepTheSpire. When this is fully finished
 # Setup
 
 npx create-expo-app react-native-example
-
 npx expo install react-native-web@~0.18.7 react-dom@18.0.0 @expo/webpack-config@^0.17.0
-
 npm expo start
 
 # Where I left off
@@ -38,10 +36,17 @@ Figured out how to get the dropdown to call the function within the component. J
 Tweaking the UI. I've also gotten app storage to work and that may be the direction I decide to take all of the info being transmitted throughout the components.
 Left off trying to figure out how to get the AsynStorage item value for hero. Await should theoretically allow me to do synchronous execution.
 
+11-21-22
+Figured out a lot! AsyncStorage is now working. Turns out I wasn't importing it earlier where I was getting the values. This lead to it defaulting to a deprecated package I believe instead of throwing an error.
+Added a modal to the cardAnalysis component that let's you choose whether you want to add the card to your deck.
+Figured out how to pass variables correctly to useNavigate allowing the cardAnalysis component to work correctly.
+
+11-22-22
+Almost have adding card to deck working! Just need to modify addCardToDeck in CardsAnalysis to actually add the card.
+
 # To do list
 
-- Figure out why links aren't clickable in the right places
-- (not project related) setup a better shell for my IDE
+- Add ability to upgrade cards in CardAnalysis component
 - Get rid of that pesky "ReactDOM.render is no longer supporte din React 18" bug
 
 # Questions that I need to ask a sme

@@ -12,7 +12,12 @@ const Separator = () => (
 export default function NewRun() {
     const [heroClass, setHeroClass] = useState("")
     const [ascensionLevel, setAscensionLevel] = useState(0)
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const commonDeck = {
+      "Strike": 4,
+      "Defend": 4,
+    }
+    const [deck, setDeck] = useState(commonDeck)
 
     const heroClassData = [
       {key:'1', value:'Ironclad'},
@@ -52,7 +57,7 @@ export default function NewRun() {
       } catch (e) {
         console.log(e)
       }
-    }    
+    }
 
     const storeAscensionLevel = async (value) => {
       try {
@@ -63,9 +68,37 @@ export default function NewRun() {
       }
     }        
 
+    const storeDeck = async (deck) => {
+      if(heroClass == "Ironclad"){
+        deck["bash"] = 1
+        deck["Strike"] = 5
+      }
+      else if (heroClass == "Silent"){
+        deck["Survivor"] = 1
+        deck["Neutralize"] = 1
+        deck["Strike"] = 5
+      }
+      else if (heroClass == "Defect"){
+        deck["Zap"] = 1
+        deck["Dualcast"] = 1
+      }
+      if(ascensionLevel>=10){
+        deck["Ascender's Bane"] = 1
+      }
+      setDeck(deck)
+      try {
+        const jsonDeckValue = JSON.stringify(deck)
+        await AsyncStorage.setItem('@deck', jsonDeckValue)
+        console.log(`Stored deck ${jsonDeckValue}`)
+      } catch (e) {
+        // saving error
+      }
+    }
+
     const renderRunPrep = () => {
       storeHero(heroClass)
       storeAscensionLevel(ascensionLevel)
+      storeDeck(deck)
       navigate("/runprep")
     }
 
@@ -73,7 +106,7 @@ export default function NewRun() {
         <View style={styles.container}>
           <ScrollView style={styles.menuWrapper}>
             <h2 style={styles.menuTitle}>New Run</h2>
-            <h3 style={styles.menuTitle}>Class</h3>
+            <h3 style={styles.menuOption}>Class</h3>
             <SelectList
                 setSelected={(heroClass) => setHeroClass(heroClass)}
                 data={heroClassData}
@@ -83,7 +116,7 @@ export default function NewRun() {
                 dropdownItemStyles={styles.monospaceFont}
                 dropdownStyles={{backgroundColor: '#fff', fontFamily: 'monospace',}}
             />          
-            <h3 style={styles.menuTitle}>Ascension Level</h3>
+            <h3 style={styles.menuOption}>Ascension Level</h3>
             <SelectList
                 setSelected={(ascensionLevel) => setAscensionLevel(ascensionLevel)}
                 data={ascensionLevelData}

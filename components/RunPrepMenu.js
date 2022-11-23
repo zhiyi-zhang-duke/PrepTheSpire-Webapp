@@ -27,7 +27,7 @@ export default function RunPrepMenu(props) {
       } catch(e) {
           // error reading value
       }
-  }      
+    }
     
     const navigate = useNavigate();
 

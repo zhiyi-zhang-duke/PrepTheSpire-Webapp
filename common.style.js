@@ -26,7 +26,7 @@ export default StyleSheet.create({
     },
     menuOption: {
         color: '#fff',
-        fontSize: 25,
+        fontSize: 30,
         fontFamily: 'monospace',
     },
     // Figure out how to get the 2 icons side by side
@@ -75,7 +75,15 @@ export default StyleSheet.create({
 
     //Card styles
     cardText: {
-        padding: 10,
+        padding: 8,
+    },
+    addCardImage: {
+        width: 32,
+        height: 32,
+    },
+    cardRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
 
     //Modal styles
