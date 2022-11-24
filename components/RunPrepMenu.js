@@ -46,8 +46,7 @@ export default function RunPrepMenu(props) {
     }
 
     const renderDeckPrep = () => {
-        //Todo: use useNavigate to route to the RunPrep component
-        alert("Navigating to DeckPrep.js...")
+        navigate("/deckprep")
     }
 
     return (

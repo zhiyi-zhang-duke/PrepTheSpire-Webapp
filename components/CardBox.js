@@ -6,7 +6,6 @@ import { Card } from '@rneui/base';
 
 export default function CardBox(props) {
     const renderAddCardModal = props.renderAddCardModal
-    const upgradeCard = props.upgradeCard
     const [card, setCard] = useState(props.cardData.card)
     const [upgradeDisabled, setUpgradeDisabled] = useState(false)
 
@@ -36,7 +35,6 @@ export default function CardBox(props) {
                     onPress={() => {
                         setCard(card+"+")
                         setUpgradeDisabled(true)
-                        upgradeCard(card)
                     }}
                     disabled={upgradeDisabled}
                 >

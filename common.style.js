@@ -119,5 +119,14 @@ export default StyleSheet.create({
         padding: 15,
         margin: 10,
     },
+
+    // Deck styles
+    listItem: {
+        backgroundColor: '#000000',
+        color: '#fff',
+        fontFamily: 'Monospace',
+        padding: 5,
+        fontSize: 18,
+    }
 });
   

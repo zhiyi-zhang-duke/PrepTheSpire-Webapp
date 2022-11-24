@@ -4,8 +4,8 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { gql, useQuery } from '@apollo/client'
 import styles from '../common.style.js';
 import Loading from './Loading'
+import { storeDeck, getDeckFromStorage } from './util/CommonUtil'
 // import { Link, useLocation } from "react-router-dom";
-import { Card } from '@rneui/base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CardBox from "./CardBox";
 
@@ -34,21 +34,9 @@ export default function CardsAnalysis() {
     const [deck, setDeck] = useState({})
 
     const [selectedCard, setSelectedCard] = useState("")
-
-
-    // Get deck from storage
-    const getDeckFromStorage = async () => {
-        try {
-            const jsonDeck = await AsyncStorage.getItem('@deck')
-            const decObj = jsonDeck != null ? JSON.parse(jsonDeck) : null;
-            setDeck(decObj)
-        } catch(e) {
-            // error reading value
-        }
-    }
     
     useEffect(() => {
-        getDeckFromStorage()
+        getDeckFromStorage(setDeck)
     }, [])
 
     // Get card data for each card choice
@@ -96,20 +84,6 @@ export default function CardsAnalysis() {
         console.log(card)
         setSelectedCard(card)
         setModalVisible(true)
-    }
-
-    const upgradeCard = (cardData) => {
-        console.log(cardData)
-    }
-
-    const storeDeck = async (deck) => {
-        try {
-            const jsonDeckValue = JSON.stringify(deck)
-            await AsyncStorage.setItem('@deck', jsonDeckValue)
-            console.log(`Stored deck ${jsonDeckValue}`)
-        } catch (e) {
-        // saving error
-        }
     }
 
     const addCardToDeck = () => {
@@ -166,17 +140,14 @@ export default function CardsAnalysis() {
                 </Modal>
                 <CardBox 
                     renderAddCardModal={renderAddCardModal}
-                    upgradeCard={upgradeCard}
                     cardData={card1Data}
                 />
                 <CardBox 
                     renderAddCardModal={renderAddCardModal}
-                    upgradeCard={upgradeCard}
                     cardData={card2Data}
                 />
                 <CardBox 
                     renderAddCardModal={renderAddCardModal}
-                    upgradeCard={upgradeCard}
                     cardData={card3Data}
                 />
                 <Separator />

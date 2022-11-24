@@ -44,15 +44,20 @@ Figured out how to pass variables correctly to useNavigate allowing the cardAnal
 11-22-22
 Almost have adding card to deck working! Just need to modify addCardToDeck in CardsAnalysis to actually add the card.
 
+11-23-22
+The deck adding ability is working! Now we're concerned with getting the upgrade card button working.
+Made the Card portion of CardsAnalysis a separate component.
+
 # To do list
 
 - Add ability to upgrade cards in CardAnalysis component
+- Make some important operations like getting and storing the deck shared in a util
 - Get rid of that pesky "ReactDOM.render is no longer supporte din React 18" bug
 
 # Questions that I need to ask a sme
 
 - Should I use react router to render pages in a single page web application or hide and show components within a parent component?
-- Why does AsyncStorage work across components?
+- Should I call useQuery and store the data as state?
 
 # Resources
 
