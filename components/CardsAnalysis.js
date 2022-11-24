@@ -7,6 +7,7 @@ import Loading from './Loading'
 // import { Link, useLocation } from "react-router-dom";
 import { Card } from '@rneui/base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import CardBox from "./CardBox";
 
 const CARD_SCORE_QUERY = gql`
     query cardTier($name: String!) {
@@ -32,8 +33,6 @@ export default function CardsAnalysis() {
     const [modalVisible, setModalVisible] = useState(false)
     const [deck, setDeck] = useState({})
 
-    const addCardIcon = require('../assets/add.png')
-    const upgradeIcon = require('../assets/upgrade.png')
     const [selectedCard, setSelectedCard] = useState("")
 
 
@@ -165,90 +164,21 @@ export default function CardsAnalysis() {
                         </View>
                     </View>
                 </Modal>
-                <Card>
-                    <Card.Title>{card1Data.card}</Card.Title>
-                    <View style={styles.cardRow}>
-                        <Text style={styles.cardText}>Act 1: {card1Data.act1}</Text>
-                        <Text style={styles.cardText}>Act 2: {card1Data.act2}</Text>
-                        <Text style={styles.cardText}>Act 3: {card1Data.act3}</Text>   
-                        <Pressable
-                            onPress={() => {
-                                renderAddCardModal(card1Data.card)
-                            }}
-                        >
-                            <Image
-                                style={styles.addCardImage} source={addCardIcon}></Image>                            
-                        </Pressable>
-                    </View>
-                    <View style={styles.cardRow}>
-                        <Text style={styles.cardText}>Overall: {card1Data.overall}</Text>
-                        <Text style={styles.cardText}>Upgrade: {card1Data.upgrade}</Text>
-                        <Pressable
-                            onPress={() => {
-                                upgradeCard(card1Data)
-                            }}
-                        >
-                            <Image
-                                style={styles.addCardImage} source={upgradeIcon}></Image>                            
-                        </Pressable>                         
-                    </View>
-                </Card>
-                <Card>
-                    <Card.Title>{card2Data.card}</Card.Title>
-                    <View style={styles.cardRow}>
-                        <Text style={styles.cardText}>Act 1: {card2Data.act1}</Text>
-                        <Text style={styles.cardText}>Act 2: {card2Data.act2}</Text>
-                        <Text style={styles.cardText}>Act 3: {card2Data.act3}</Text>
-                        <Pressable
-                            onPress={() => {
-                                renderAddCardModal(card1Data.card)
-                            }}
-                        >
-                            <Image
-                                style={styles.addCardImage} source={addCardIcon}></Image>                            
-                        </Pressable>
-                    </View>
-                    <View style={styles.cardRow}>
-                        <Text style={styles.cardText}>Overall: {card2Data.overall}</Text>
-                        <Text style={styles.cardText}>Upgrade: {card2Data.upgrade}</Text>
-                        <Pressable
-                            onPress={() => {
-                                upgradeCard(card1Data.card)
-                            }}
-                        >
-                            <Image
-                                style={styles.addCardImage} source={upgradeIcon}></Image>                            
-                        </Pressable>                        
-                    </View>
-                </Card>       
-                <Card>
-                    <Card.Title>{card3Data.card}</Card.Title>
-                    <View style={styles.cardRow}>
-                        <Text style={styles.cardText}>Act 1: {card2Data.act1}</Text>
-                        <Text style={styles.cardText}>Act 2: {card2Data.act2}</Text>
-                        <Text style={styles.cardText}>Act 3: {card2Data.act3}</Text>
-                        <Pressable
-                            onPress={() => {
-                                renderAddCardModal(card1Data.card)
-                            }}
-                        >
-                            <Image
-                                style={styles.addCardImage} source={addCardIcon}></Image>                            
-                        </Pressable>
-                    </View>
-                    <View style={styles.cardRow}>
-                        <Text style={styles.cardText}>Overall: {card2Data.overall}</Text>
-                        <Text style={styles.cardText}>Upgrade: {card2Data.upgrade}</Text>
-                        <Pressable
-                            onPress={() => {
-                                upgradeCard(card1Data.card)
-                            }}
-                        >
-                            <Image
-                                style={styles.addCardImage} source={upgradeIcon}></Image>                            
-                        </Pressable>                         
-                    </View>
-                </Card>
+                <CardBox 
+                    renderAddCardModal={renderAddCardModal}
+                    upgradeCard={upgradeCard}
+                    cardData={card1Data}
+                />
+                <CardBox 
+                    renderAddCardModal={renderAddCardModal}
+                    upgradeCard={upgradeCard}
+                    cardData={card2Data}
+                />
+                <CardBox 
+                    renderAddCardModal={renderAddCardModal}
+                    upgradeCard={upgradeCard}
+                    cardData={card3Data}
+                />
                 <Separator />
                 <Pressable
                     style={styles.buttonStyle}
